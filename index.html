@@ -1,0 +1,75 @@
+<html>
+<head>
+  <title>Reported Speech Game - Summer Holiday Plans</title>
+  <style>
+    .dialogue {
+      color: blue;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .reported {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid black;
+      background-color: #f0f0f0;
+      display: none;
+    }
+    .player {
+      font-weight: bold;
+      color: red;
+    }
+    .score {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Reported Speech Game - Summer Holiday Plans</h1>
+  
+  <div class="player">Player 1's turn</div>
+  
+  <p>John and Emily were discussing their summer holiday plans. <span class="dialogue" onclick="toggleReported(0)">John said, "I think we should go to the beach this year."</span></p>
+  <div class="reported">John suggested that they should go to the beach that year.</div>
+  
+  <p><span class="dialogue" onclick="toggleReported(1)">Emily replied, "But we went to the beach last year. Let's try something different."</span></p>
+  <div class="reported">Emily pointed out that they had gone to the beach the previous year and proposed trying something different.</div>
+  
+  <!-- More questions... -->
+  
+  <p><span class="dialogue" onclick="toggleReported(28)">Emily said, "I can't believe we finally agreed on a destination!"</span></p>
+  <div class="reported">Emily expressed her surprise that they had finally agreed on a destination.</div>
+  
+  <p><span class="dialogue" onclick="toggleReported(29)">John replied, "It's going to be the best summer holiday ever!"</span></p>
+  <div class="reported">John declared that it was going to be the best summer holiday ever.</div>
+  
+  <div class="score">Player 1 score: <span id="player1Score">0</span></div>
+  <div class="score">Player 2 score: <span id="player2Score">0</span></div>
+  
+  <script>
+    var currentPlayer = 1;
+    var player1Score = 0;
+    var player2Score = 0;
+    
+    function toggleReported(index) {
+      var reportedItems = document.getElementsByClassName("reported");
+      var reportedItem = reportedItems[index];
+      
+      if (reportedItem.style.display === "none") {
+        reportedItem.style.display = "block";
+        
+        if (currentPlayer === 1) {
+          player1Score++;
+          document.getElementById("player1Score").textContent = player1Score;
+        } else {
+          player2Score++;
+          document.getElementById("player2Score").textContent = player2Score;
+        }
+        
+        currentPlayer = currentPlayer === 1 ? 2 : 1;
+        document.querySelector(".player").textContent = "Player " + currentPlayer + "'s turn";
+      }
+    }
+  </script>
+</body>
+</html>
